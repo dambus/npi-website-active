@@ -10,23 +10,23 @@ Codex should complete tasks **in order**, marking items as done.
 
 Goal: install essential libraries needed for routing, Supabase, and utilities.
 
-- [ ] Install React Router
+- [x] Install React Router
 
 npm install react-router-dom
 
-- [ ] Install Supabase client
+- [x] Install Supabase client
 
 npm install @supabase/supabase-js
 
-- [ ] Install utility library for class management
+- [x] Install utility library for class management
 
 npm install clsx
 
-- [ ] Install development formatting tools
+- [x] Install development formatting tools
 
 npm install -D prettier prettier-plugin-tailwindcss
 
-- [ ] Verify project compiles successfully
+- [x] Verify project compiles successfully
 
 npm run dev
 
@@ -41,22 +41,22 @@ Goal: create scalable architecture for public website and admin CMS.
 
 Create the following folders inside `src/`:
 
-- [ ] app
-- [ ] components
-- [ ] components/layout
-- [ ] components/ui
-- [ ] layouts
-- [ ] pages
-- [ ] pages/public
-- [ ] pages/admin
-- [ ] sections
-- [ ] services
-- [ ] lib
-- [ ] hooks
-- [ ] types
-- [ ] data
-- [ ] assets
-- [ ] routes
+- [x] app
+- [x] components
+- [x] components/layout
+- [x] components/ui
+- [x] layouts
+- [x] pages
+- [x] pages/public
+- [x] pages/admin
+- [x] sections
+- [x] services
+- [x] lib
+- [x] hooks
+- [x] types
+- [x] data
+- [x] assets
+- [x] routes
 
 Expected result:
 Clean architecture ready for expansion.
@@ -67,15 +67,15 @@ Clean architecture ready for expansion.
 
 Create the main application files.
 
-- [ ] src/main.tsx
-- [ ] src/app/App.tsx
-- [ ] src/routes/router.tsx
+- [x] src/main.tsx
+- [x] src/app/App.tsx
+- [x] src/routes/router.tsx
 
 Tasks:
 
-- [ ] configure React Router
-- [ ] mount router in App.tsx
-- [ ] verify application renders
+- [x] configure React Router
+- [x] mount router in App.tsx
+- [x] verify application renders
 
 Expected result:
 App renders using router.
@@ -88,14 +88,14 @@ Goal: separate public site layout from admin layout.
 
 Create:
 
-- [ ] layouts/PublicLayout.tsx
-- [ ] layouts/AdminLayout.tsx
+- [x] layouts/PublicLayout.tsx
+- [x] layouts/AdminLayout.tsx
 
 Create layout components:
 
-- [ ] components/layout/SiteHeader.tsx
-- [ ] components/layout/SiteFooter.tsx
-- [ ] components/layout/Container.tsx
+- [x] components/layout/SiteHeader.tsx
+- [x] components/layout/SiteFooter.tsx
+- [x] components/layout/Container.tsx
 
 PublicLayout should contain:
 
@@ -117,11 +117,11 @@ Pages render inside layouts.
 
 Create placeholder pages.
 
-- [ ] pages/public/HomePage.tsx
-- [ ] pages/public/AboutPage.tsx
-- [ ] pages/public/ServicesPage.tsx
-- [ ] pages/public/ReferencesPage.tsx
-- [ ] pages/public/ContactPage.tsx
+- [x] pages/public/HomePage.tsx
+- [x] pages/public/AboutPage.tsx
+- [x] pages/public/ServicesPage.tsx
+- [x] pages/public/ReferencesPage.tsx
+- [x] pages/public/ContactPage.tsx
 
 Each page must include:
 
@@ -146,8 +146,8 @@ All routes render successfully.
 
 Create admin structure.
 
-- [ ] pages/admin/AdminLoginPage.tsx
-- [ ] pages/admin/AdminDashboardPage.tsx
+- [x] pages/admin/AdminLoginPage.tsx
+- [x] pages/admin/AdminDashboardPage.tsx
 
 Admin pages should contain simple placeholder content.
 
@@ -162,13 +162,13 @@ Goal: prepare protected admin routes.
 
 Create:
 
-- [ ] routes/ProtectedRoute.tsx
+- [x] routes/ProtectedRoute.tsx
 
 Tasks:
 
-- [ ] create simple auth guard
-- [ ] use placeholder boolean authentication
-- [ ] redirect unauthenticated users to `/admin/login`
+- [x] create simple auth guard
+- [x] use placeholder boolean authentication
+- [x] redirect unauthenticated users to `/admin/login`
 
 Expected result:
 
@@ -180,15 +180,15 @@ Expected result:
 
 Create environment helpers.
 
-- [ ] lib/env.ts
-- [ ] lib/supabase.ts
+- [x] lib/env.ts
+- [x] lib/supabase.ts
 
 Tasks:
 
-- [ ] read VITE_SUPABASE_URL
-- [ ] read VITE_SUPABASE_ANON_KEY
-- [ ] create Supabase client
-- [ ] throw error if variables are missing
+- [x] read VITE_SUPABASE_URL
+- [x] read VITE_SUPABASE_ANON_KEY
+- [x] create Supabase client
+- [x] throw error if variables are missing
 
 Expected result:
 Supabase client ready for use.
@@ -201,7 +201,7 @@ Prepare TypeScript types.
 
 Create:
 
-- [ ] types/project.ts
+- [x] types/project.ts
 
 Project type must include:
 
@@ -225,7 +225,7 @@ Types ready for Supabase integration.
 
 Create placeholder site configuration.
 
-- [ ] data/site.ts
+- [x] data/site.ts
 
 Include:
 
@@ -243,27 +243,27 @@ Centralized site data.
 
 Create project documentation directories.
 
-- [ ] docs/00_project
-- [ ] docs/01_content
-- [ ] docs/02_design
-- [ ] docs/03_tech
-- [ ] docs/04_execution
+- [x] docs/00_project
+- [x] docs/01_content
+- [x] docs/02_design
+- [x] docs/03_tech
+- [x] docs/04_execution
 
 Create starter documentation files:
 
-- [ ] docs/00_project/brief.md
-- [ ] docs/00_project/roadmap.md
-- [ ] docs/00_project/decisions.md
-- [ ] docs/01_content/sitemap.md
-- [ ] docs/01_content/content_inventory.md
-- [ ] docs/02_design/design_direction.md
-- [ ] docs/03_tech/architecture.md
-- [ ] docs/03_tech/supabase_schema.md
-- [ ] docs/03_tech/deployment.md
-- [ ] docs/04_execution/backlog.md
-- [ ] docs/04_execution/current_sprint.md
-- [ ] docs/04_execution/changelog.md
-- [ ] docs/04_execution/prompts_codex.md
+- [x] docs/00_project/brief.md
+- [x] docs/00_project/roadmap.md
+- [x] docs/00_project/decisions.md
+- [x] docs/01_content/sitemap.md
+- [x] docs/01_content/content_inventory.md
+- [x] docs/02_design/design_direction.md
+- [x] docs/03_tech/architecture.md
+- [x] docs/03_tech/supabase_schema.md
+- [x] docs/03_tech/deployment.md
+- [x] docs/04_execution/backlog.md
+- [x] docs/04_execution/current_sprint.md
+- [x] docs/04_execution/changelog.md
+- [x] docs/04_execution/prompts_codex.md
 
 Expected result:
 Project documentation ready.
@@ -274,13 +274,13 @@ Project documentation ready.
 
 Refine the project.
 
-- [ ] create `cn` utility using clsx
-- [ ] add path alias `@` for src
-- [ ] update imports to use alias
-- [ ] create basic Button component
-- [ ] create SectionHeading component
-- [ ] create NotFound page
-- [ ] add route for 404 page
+- [x] create `cn` utility using clsx
+- [x] add path alias `@` for src
+- [x] update imports to use alias
+- [x] create basic Button component
+- [x] create SectionHeading component
+- [x] create NotFound page
+- [x] add route for 404 page
 
 Expected result:
 Cleaner developer experience.
@@ -291,7 +291,7 @@ Cleaner developer experience.
 
 Create environment example.
 
-- [ ] .env.example
+- [x] .env.example
 
 Content:
 
@@ -308,11 +308,11 @@ Environment variables documented.
 Before moving forward:
 
 - [ ] run dev server
-- [ ] verify all routes
-- [ ] verify admin redirect works
-- [ ] confirm TypeScript has no errors
-- [ ] confirm Tailwind styles work
-- [ ] confirm project builds successfully
+- [x] verify all routes
+- [x] verify admin redirect works
+- [x] confirm TypeScript has no errors
+- [x] confirm Tailwind styles work
+- [x] confirm project builds successfully
 
 Command:
 
