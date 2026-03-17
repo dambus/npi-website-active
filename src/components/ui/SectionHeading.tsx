@@ -7,6 +7,7 @@ type SectionHeadingProps = {
   title: string
   description?: ReactNode
   align?: 'left' | 'center'
+  as?: 'h1' | 'h2' | 'h3'
   className?: string
 }
 
@@ -15,16 +16,19 @@ export function SectionHeading({
   title,
   description,
   align = 'left',
+  as = 'h2',
   className,
 }: SectionHeadingProps) {
+  const HeadingTag = as
+
   return (
     <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
-      <p className="text-sm uppercase tracking-[0.3em] text-amber-700">{eyebrow}</p>
-      <h1 className="mt-4 text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+      <p className="text-xs font-semibold uppercase tracking-[0.32em] text-amber-700">{eyebrow}</p>
+      <HeadingTag className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-stone-950 sm:text-5xl lg:text-6xl">
         {title}
-      </h1>
+      </HeadingTag>
       {description ? (
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-stone-600">{description}</p>
+        <p className="mt-6 max-w-3xl text-base leading-8 text-stone-600 sm:text-lg">{description}</p>
       ) : null}
     </div>
   )

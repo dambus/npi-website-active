@@ -7,6 +7,7 @@ export function NotFoundPage() {
     <Container className="py-20 lg:py-28">
       <div className="rounded-[2rem] border border-stone-200 bg-white px-8 py-14 shadow-sm">
         <SectionHeading
+          as="h1"
           eyebrow="404"
           title="Page not found"
           description="The page you are looking for does not exist yet or the link is no longer valid."

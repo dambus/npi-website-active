@@ -14,7 +14,155 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      project_categories: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      project_category_links: {
+        Row: {
+          category_id: string
+          created_at: string
+          project_id: string
+        }
+        Insert: {
+          category_id: string
+          created_at?: string
+          project_id: string
+        }
+        Update: {
+          category_id?: string
+          created_at?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_category_links_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "project_categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_category_links_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_images: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          id: string
+          image_path: string
+          project_id: string
+          sort_order: number
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          image_path: string
+          project_id: string
+          sort_order?: number
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          image_path?: string
+          project_id?: string
+          sort_order?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_images_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          country: string | null
+          created_at: string
+          featured_image_path: string | null
+          full_description: string | null
+          id: string
+          industry: string | null
+          investor: string | null
+          is_featured: boolean
+          is_published: boolean
+          location: string | null
+          project_phase: string | null
+          short_description: string
+          slug: string
+          sort_order: number
+          title: string
+          updated_at: string
+          year: number | null
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string
+          featured_image_path?: string | null
+          full_description?: string | null
+          id?: string
+          industry?: string | null
+          investor?: string | null
+          is_featured?: boolean
+          is_published?: boolean
+          location?: string | null
+          project_phase?: string | null
+          short_description: string
+          slug: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          year?: number | null
+        }
+        Update: {
+          country?: string | null
+          created_at?: string
+          featured_image_path?: string | null
+          full_description?: string | null
+          id?: string
+          industry?: string | null
+          investor?: string | null
+          is_featured?: boolean
+          is_published?: boolean
+          location?: string | null
+          project_phase?: string | null
+          short_description?: string
+          slug?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          year?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

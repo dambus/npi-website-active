@@ -1,7 +1,7 @@
-Current phase: Phase 14 verification
+Current phase: Phase 5 admin auth and project CMS foundation
 
 Status:
-Project scaffold now includes the Phase 12 code-quality pass, the Phase 13 environment example, and the missing Phase 11 documentation files. Supabase CLI is linked and working through `SUPABASE_DB_URL`, database types are generated, migration history is in sync, and production build passes.
+The app now includes a real auth provider, session-aware admin route protection, protected project CMS routes, admin-side project services, and practical create/edit form foundations with category assignment and upload handling. A focused admin usability pass also improved contrast, field readability, navigation clarity, and form/list screen spacing without redesigning the admin.
 
 Open note:
-Local dev server startup is still constrained by sandbox port binding, so route checks were completed through code review and build verification rather than an interactive browser session.
+Runtime login verification is still blocked until a regular Supabase admin user is provisioned through the normal auth flow rather than a manual SQL workaround.

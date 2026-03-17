@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = {
-  primary: 'bg-stone-950 text-white hover:bg-stone-800',
-  secondary: 'bg-white text-stone-950 ring-1 ring-inset ring-stone-200 hover:bg-stone-50',
+  primary: 'bg-stone-950 text-white hover:-translate-y-0.5 hover:bg-stone-800',
+  secondary:
+    'bg-white text-stone-950 ring-1 ring-inset ring-stone-200 hover:-translate-y-0.5 hover:bg-stone-50',
   ghost: 'bg-transparent text-stone-700 hover:bg-stone-100',
 } as const
 
@@ -56,4 +57,4 @@ export function LinkButton({
 }
 
 const buttonBaseClassName =
-  'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:pointer-events-none disabled:opacity-60'
+  'inline-flex min-h-12 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold tracking-[0.01em] transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 disabled:pointer-events-none disabled:opacity-60'
