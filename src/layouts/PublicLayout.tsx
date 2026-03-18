@@ -5,7 +5,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader'
 
 export function PublicLayout() {
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800">
+    <div className="min-h-screen bg-[color:var(--background)] text-[color:var(--text)]">
       <SiteHeader />
       <main>
         <Outlet />
