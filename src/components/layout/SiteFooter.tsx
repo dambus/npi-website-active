@@ -55,7 +55,11 @@ export function SiteFooter() {
                 <h2 className="text-2xl font-semibold tracking-[-0.04em] text-[color:var(--text)]">Office</h2>
                 <div className="mt-6 space-y-4 text-[0.98rem] leading-8 text-[color:var(--text-muted)]">
                   <p>{siteConfig.legalName}</p>
-                  <p>{siteConfig.contact.address}</p>
+                  <div>
+                    {siteConfig.contact.addressLines.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
                   <p className="font-semibold text-[color:var(--text)]">P: {siteConfig.contact.phone}</p>
                   <p className="font-semibold text-[color:var(--text)]">E: {siteConfig.contact.email}</p>
                 </div>

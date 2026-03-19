@@ -27,7 +27,11 @@ export function ContactPage() {
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">Address</p>
-              <p className="mt-2 text-lg font-semibold text-stone-950">{siteConfig.contact.address}</p>
+              <div className="mt-2 space-y-1 text-lg font-semibold text-stone-950">
+                {siteConfig.contact.addressLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
             </div>
           </Card>
         </div>

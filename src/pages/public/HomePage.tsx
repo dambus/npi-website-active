@@ -1,18 +1,33 @@
-import heroImage from '@/assets/hero.png'
 import * as React from 'react'
+import {
+  BoltIcon,
+  CpuChipIcon,
+  DocumentTextIcon,
+  TrophyIcon,
+} from '@heroicons/react/24/outline'
+import { IconBroadcast, IconTrendingUp, IconUsersGroup } from '@tabler/icons-react'
 import { Link } from 'react-router-dom'
 
 import { Container } from '@/components/layout/Container'
+import { ButtonArrowIcon } from '@/components/ui/ButtonArrowIcon'
 import { getProjects } from '@/services/projects/getProjects'
 import type { Project } from '@/types/project'
 
 const heroLandingImage = '/media/hero-landing.jpg'
-const heroTeamImage = '/media/hero-team.jpg'
+const heroFrontImage = '/media/promo pictures/DSC_8772.jpg'
+const servicesFeatureImage = '/media/on site pictures/DSC_8729-Edit.jpg'
+const processSectionImage = '/media/on site pictures/DSC_8593-Edit.jpg'
 
 const introStats = [
   { value: 20, suffix: '+', label: 'years in industrial project environments' },
   { value: 4, suffix: '', label: 'core delivery groups across engineering support' },
   { value: 3, suffix: '', label: 'selected references highlighted on the homepage' },
+]
+
+const introAudience = [
+  'Project owners and investors',
+  'EPC and delivery partners',
+  'Industrial decision-makers',
 ]
 
 const services = [
@@ -29,17 +44,17 @@ const services = [
   {
     title: 'Instrumentation and Control',
     description: 'Structured support for control logic, field instrumentation, and project communication between disciplines.',
-    icon: ControlIcon,
+    icon: CpuChipIcon,
   },
   {
     title: 'Telecom, Fire and Gas',
     description: 'Coordination for systems that depend on reliability, safety alignment, and documentation clarity.',
-    icon: SignalIcon,
+    icon: IconBroadcast,
   },
   {
     title: 'Technical Documentation',
     description: 'Execution-ready documentation that helps teams move from concept definition to delivery preparation.',
-    icon: DocumentIcon,
+    icon: DocumentTextIcon,
   },
 ]
 
@@ -106,7 +121,7 @@ export function HomePage() {
             <Container className="relative z-10 px-0" size="wide">
               <div className="grid gap-12 lg:min-h-[640px] lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
               <div>
-                <span className="section-label border-white/10 bg-white/5 text-[color:var(--brand-soft)] before:bg-[color:var(--brand)]">
+                <span className="section-label section-label-dark">
                   Engineering support that stays clear under complexity
                 </span>
                 <h1 className="mt-8 max-w-5xl text-[clamp(3.2rem,6.2vw,6.1rem)] font-normal leading-[0.95] tracking-[-0.055em] text-white">
@@ -131,9 +146,9 @@ export function HomePage() {
               <div className="relative lg:justify-self-end">
                 <div className="relative overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/8 shadow-[0_30px_80px_rgba(0,0,0,0.24)] backdrop-blur-md">
                   <img
-                    alt="NPI engineering team"
+                    alt="NPI industrial facility detail"
                     className="h-[360px] w-full object-cover sm:h-[420px] lg:h-[520px] lg:w-[480px]"
-                    src={heroTeamImage}
+                    src={heroFrontImage}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,14,15,0.76)] via-transparent to-[rgba(8,14,15,0.18)]" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
@@ -156,21 +171,26 @@ export function HomePage() {
 
       <section className="pt-20 sm:pt-24">
         <div className="npi-shell">
-          <div className="npi-soft-lines overflow-hidden rounded-[1.4rem] bg-[color:var(--surface-alt)] px-6 py-14 sm:px-10 lg:px-14 lg:py-16">
+          <div className="npi-soft-lines overflow-hidden rounded-[1.4rem] bg-[linear-gradient(135deg,#b9d9cd_0%,#d7e8e0_48%,#f3f7f5_100%)] px-6 py-14 sm:px-10 lg:px-14 lg:py-16">
             <Container className="relative z-10 px-0" size="wide">
               <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
               <div className="max-w-sm">
                 <span className="section-label">Get to know NPI</span>
-                <div className="mt-10 flex -space-x-3">
-                  {['N', 'P', 'I', '+'].map((item, index) => (
-                    <div
-                      key={item}
-                      className="grid h-14 w-14 place-items-center rounded-full border-2 border-[color:var(--surface)] bg-white text-lg font-semibold text-[color:var(--brand)] shadow-[var(--shadow-card)]"
-                      style={{ zIndex: 4 - index }}
-                    >
-                      {item}
-                    </div>
-                  ))}
+                <div className="mt-10 rounded-[0.95rem] border border-white/65 bg-white/78 p-5 shadow-[0_16px_28px_rgba(11,20,20,0.08)] backdrop-blur-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-strong)]">
+                    Who We Support
+                  </p>
+                  <div className="mt-4 grid gap-3">
+                    {introAudience.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-3 rounded-full border border-[rgba(15,154,104,0.16)] bg-white/80 px-4 py-3 text-sm font-medium text-[color:var(--text)] shadow-[0_8px_18px_rgba(11,20,20,0.04)]"
+                      >
+                        <span className="h-2.5 w-2.5 rounded-full bg-[color:var(--brand)]" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <p className="mt-5 max-w-xs text-lg leading-7 text-[color:var(--text-muted)]">
                   Built for stakeholders who need a serious technical partner, not marketing noise.
@@ -199,7 +219,7 @@ export function HomePage() {
 
               <div className="relative z-10 mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {introStats.map((item) => (
-                <div key={item.label} className="rounded-[1rem] bg-white/88 p-6 shadow-[var(--shadow-card)]">
+                <div key={item.label} className="rounded-[1rem] border border-white/70 bg-white/92 p-6 shadow-[0_18px_36px_rgba(11,20,20,0.08)]">
                   <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--brand)]">Proof</p>
                   <p className="mt-4 text-5xl font-semibold tracking-[-0.07em] text-[color:var(--text)]">
                     {item.value}
@@ -245,7 +265,7 @@ export function HomePage() {
             </div>
 
             <div className="rounded-[1.2rem] bg-white p-8 shadow-[var(--shadow-card)] lg:p-10">
-              <ServiceIconCard icon={PeopleIcon} title="Expert team alignment" />
+              <ServiceIconCard icon={IconUsersGroup} title="Expert team alignment" />
               <p className="mt-7 text-base leading-7 text-[color:var(--text-muted)]">
                 Teams, partners, and decision-makers get a calm overview of what NPI supports and how technical
                 communication is structured across project interfaces.
@@ -255,27 +275,23 @@ export function HomePage() {
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1fr_0.95fr]">
             {services.slice(0, 2).map((service) => (
-              <article
+              <ServiceHoverCard
                 key={service.title}
-                className="rounded-[1.2rem] bg-white p-8 shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-1"
-              >
-                <service.icon className="h-14 w-14 text-[color:var(--brand)]" />
-                <h3 className="mt-10 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)]">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">{service.description}</p>
-              </article>
+                description={service.description}
+                icon={service.icon}
+                title={service.title}
+              />
             ))}
 
             <div className="relative overflow-hidden rounded-[1.2rem] bg-[color:var(--surface-inverse)]">
               <img
-                alt="NPI engineering collaboration"
+                alt="NPI industrial plant infrastructure"
                 className="h-full min-h-[320px] w-full object-cover opacity-55"
-                src={heroImage}
+                src={servicesFeatureImage}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,20,20,0.84)] via-transparent to-transparent" />
               <div className="absolute left-6 top-6 grid h-20 w-20 place-items-center rounded-full bg-[color:var(--brand)] text-white shadow-[0_16px_36px_var(--brand-glow)]">
-                <GrowthIcon className="h-10 w-10" />
+                <IconTrendingUp className="h-10 w-10 stroke-[1.8]" />
               </div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <p className="text-lg text-[color:var(--text-on-dark-muted)]">Faster alignment</p>
@@ -286,16 +302,12 @@ export function HomePage() {
 
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             {services.slice(2).map((service) => (
-              <article
+              <ServiceHoverCard
                 key={service.title}
-                className="rounded-[1.2rem] bg-white p-8 shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-1"
-              >
-                <service.icon className="h-14 w-14 text-[color:var(--brand)]" />
-                <h3 className="mt-10 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)]">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)]">{service.description}</p>
-              </article>
+                description={service.description}
+                icon={service.icon}
+                title={service.title}
+              />
             ))}
           </div>
         </Container>
@@ -306,7 +318,7 @@ export function HomePage() {
           <div className="grid overflow-hidden rounded-[1.4rem] bg-[color:var(--surface-inverse)] lg:grid-cols-[0.9fr_1.1fr]">
             <Container className="contents" size="wide">
             <div className="px-8 py-14 text-[color:var(--text-on-dark)] sm:px-10 lg:px-14 lg:py-16">
-              <span className="section-label border-white/10 bg-white/5 text-[color:var(--brand-soft)] before:bg-[color:var(--brand)]">
+              <span className="section-label section-label-dark">
                 Our process
               </span>
               <p className="mt-10 text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--text-on-dark-muted)]">
@@ -335,8 +347,13 @@ export function HomePage() {
             </div>
 
             <div className="relative min-h-[360px] bg-[color:var(--surface-alt)]">
-              <img alt="Engineering planning session" className="h-full w-full object-cover" src={heroImage} />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[rgba(13,29,31,0.24)]" />
+              <img
+                alt="NPI onsite process infrastructure"
+                className="h-full w-full object-cover brightness-[1.03] saturate-[0.92]"
+                src={processSectionImage}
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,154,104,0.18)_0%,rgba(255,255,255,0.04)_52%,rgba(15,154,104,0.08)_100%)]" />
+              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[rgba(255,255,255,0.02)] to-[rgba(13,29,31,0.18)]" />
             </div>
             </Container>
           </div>
@@ -355,7 +372,7 @@ export function HomePage() {
                 </h2>
               </div>
               <div className="flex items-center gap-4 self-start rounded-full bg-white/90 px-5 py-4 shadow-[var(--shadow-card)]">
-                <div className="grid h-20 w-20 place-items-center rounded-full border-[10px] border-[color:var(--brand)] border-r-transparent text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)]">
+                <div className="min-w-[5.5rem] text-[3rem] font-semibold leading-none tracking-[-0.08em] text-[color:var(--brand-strong)]">
                   92%
                 </div>
                 <p className="max-w-xs text-base leading-6 text-[color:var(--text-muted)]">
@@ -404,24 +421,26 @@ export function HomePage() {
                 ? featuredProjects.map((project) => (
                     <article
                       key={project.id}
-                      className="overflow-hidden rounded-[1.2rem] bg-white shadow-[var(--shadow-card)] transition duration-200 hover:-translate-y-1"
+                      className="group overflow-hidden rounded-[1.2rem] bg-white shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_22px_54px_rgba(11,20,20,0.12)]"
                     >
-                      <div className="aspect-[4/3] overflow-hidden bg-[color:var(--surface-muted)]">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-[color:var(--surface-muted)]">
                         <img
                           alt={project.title}
-                          className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                          className="h-full w-full object-cover"
                           onError={(event) => {
-                            event.currentTarget.src = heroImage
+                            event.currentTarget.src = servicesFeatureImage
                           }}
                           src={project.featuredImage}
                         />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,154,104,0.16)_0%,rgba(11,20,20,0.26)_100%)] transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_34%)] opacity-60 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-0" />
                       </div>
-                      <div className="p-7">
+                      <div className="p-7 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5">
                         <div className="flex flex-wrap gap-2">
                           {project.categories.slice(0, 2).map((category) => (
                             <span
                               key={category}
-                              className="rounded-full bg-[color:var(--surface-muted)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-[color:var(--brand)]"
+                              className="rounded-full bg-[color:var(--surface-muted)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.1em] text-[color:var(--brand)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[color:var(--brand-soft)]"
                             >
                               {category}
                             </span>
@@ -485,7 +504,7 @@ export function HomePage() {
             <Container className="px-0" size="wide">
               <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
               <div>
-                <span className="section-label border-white/10 bg-white/5 text-[color:var(--brand-soft)] before:bg-[color:var(--brand)]">
+                <span className="section-label section-label-dark">
                   Get in touch
                 </span>
                 <h2 className="mt-7 text-[clamp(2.45rem,4vw,4.1rem)] font-semibold leading-[1] tracking-[-0.065em] text-white">
@@ -532,9 +551,7 @@ function ActionLink({
   return (
     <Link className={variant === 'primary' ? 'npi-button npi-button-primary' : 'npi-button npi-button-secondary'} to={to}>
       <span>{children}</span>
-      <span aria-hidden="true" className="npi-button__icon">
-        ↗
-      </span>
+      <ButtonArrowIcon />
     </Link>
   )
 }
@@ -570,14 +587,42 @@ function ServiceIconCard({
   icon: Icon,
   title,
 }: {
-  icon: React.ComponentType<{ className?: string }>
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
   title: string
 }) {
   return (
     <div>
-      <Icon className="h-16 w-16 text-[color:var(--brand)]" />
+      <Icon className="h-16 w-16 stroke-[1.7] text-[color:var(--brand)]" />
       <h3 className="mt-8 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)]">{title}</h3>
     </div>
+  )
+}
+
+function ServiceHoverCard({
+  description,
+  icon: Icon,
+  title,
+}: {
+  description: string
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  title: string
+}) {
+  return (
+    <article className="group relative overflow-hidden rounded-[0.95rem] border border-transparent bg-white p-8 shadow-[var(--shadow-card)] transition-[transform,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[color:var(--brand-strong)] hover:shadow-[0_22px_50px_rgba(15,154,104,0.18)]">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--brand)_0%,var(--brand-strong)_100%)] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_36%)] opacity-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" />
+      <div className="relative z-10">
+        <span className="inline-flex">
+          <Icon className="npi-hover-bounce-icon h-14 w-14 text-[color:var(--brand)] transition duration-300 ease-out group-hover:text-white" />
+        </span>
+        <h3 className="mt-10 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
+          {title}
+        </h3>
+        <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
+          {description}
+        </p>
+      </div>
+    </article>
   )
 }
 
@@ -599,7 +644,7 @@ function StatCard({
     <div ref={ref} className="rounded-[1rem] bg-white p-7 shadow-[var(--shadow-card)]">
       <div className="flex items-start justify-between gap-4">
         <div className="grid h-16 w-16 place-items-center rounded-full bg-[color:var(--surface-muted)] text-[color:var(--brand)]">
-          <GrowthIcon className="h-8 w-8" />
+          <IconTrendingUp className="h-8 w-8 stroke-[1.7]" />
         </div>
         <p className="text-3xl font-semibold tracking-[-0.06em] text-[color:var(--text-muted)]">
           {String(index).padStart(2, '0')}.
@@ -664,71 +709,4 @@ function useCountUp(target: number) {
 
   return [ref, value] as const
 }
-
-function TrophyIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <path d="M22 10h20v12c0 8-4.8 14.7-12 17-7.2-2.3-12-9-12-17V10Z" stroke="currentColor" strokeWidth="2.5" />
-      <path d="M26 41h12m-6-2v10m-8 5h16" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="M42 14h8v4c0 5.5-4.5 10-10 10M22 14h-8v4c0 5.5 4.5 10 10 10" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function PeopleIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <circle cx="23" cy="24" r="8" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="41" cy="24" r="8" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="32" cy="17" r="8" stroke="currentColor" strokeWidth="2.5" />
-      <path d="M14 48c0-6.6 5.4-12 12-12h12c6.6 0 12 5.4 12 12" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function BoltIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <path d="M34 8 18 34h12l-2 22 18-28H34l0-20Z" stroke="currentColor" strokeLinejoin="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function ControlIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <circle cx="32" cy="32" r="16" stroke="currentColor" strokeWidth="2.5" />
-      <circle cx="32" cy="32" r="4" fill="currentColor" />
-      <path d="M32 8v8M32 48v8M8 32h8M48 32h8" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function SignalIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <path d="M18 48V30m12 18V22m12 26V14m-18 0h24M16 48h32" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="m20 18 10-10 6 6 12-12" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function DocumentIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <path d="M20 10h18l10 10v34H20V10Z" stroke="currentColor" strokeLinejoin="round" strokeWidth="2.5" />
-      <path d="M38 10v12h12M26 30h16M26 38h16M26 46h12" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
-function GrowthIcon({ className }: { className?: string }) {
-  return (
-    <svg aria-hidden="true" className={className} fill="none" viewBox="0 0 64 64">
-      <path d="M14 46h36M18 42V30m12 12V22m12 20V16m10-2v10H42" stroke="currentColor" strokeLinecap="round" strokeWidth="2.5" />
-      <path d="m28 20 8-8 6 6 10-10" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" />
-    </svg>
-  )
-}
-
 export default HomePage

@@ -16,7 +16,9 @@
     "supabase:types": "supabase gen types --project-id \"$SUPABASE_PROJECT_REF\" --lang typescript --schema public > src/types/database.ts"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@supabase/supabase-js": "2.49.1",
+    "@tabler/icons-react": "^3.40.0",
     "clsx": "^2.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import { siteConfig } from '@/data/site'
+import { ButtonArrowIcon } from '@/components/ui/ButtonArrowIcon'
 import { cn } from '@/lib/utils'
 
 const logoSrc = '/media/npi-logo.png'
@@ -66,10 +67,10 @@ export function SiteHeader() {
       <div className="npi-shell">
         <div
           className={cn(
-            'border-x border-b bg-white/88 backdrop-blur-xl transition duration-300',
+            'border-x border-b bg-white/95 backdrop-blur-xl transition duration-300',
             isScrolled
               ? 'border-[color:var(--border)] shadow-[0_18px_50px_rgba(11,20,20,0.10)]'
-              : 'border-white/60 shadow-[0_10px_35px_rgba(11,20,20,0.05)]',
+              : 'border-[color:var(--border)] shadow-[0_10px_35px_rgba(11,20,20,0.08)]',
           )}
         >
           <div className="flex min-h-20 items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
@@ -78,14 +79,14 @@ export function SiteHeader() {
             </Link>
 
             <nav aria-label="Primary" className="hidden lg:block">
-              <ul className="flex items-center gap-1 text-[0.96rem] font-medium text-[color:var(--text-muted)]">
+              <ul className="flex items-center gap-1 text-[0.96rem] font-medium text-[color:var(--text)]">
                 {siteConfig.navigation.map((item) => (
                   <li key={item.href}>
                     <NavLink
                       className={({ isActive }) =>
                         cn(
-                          'rounded-full px-4 py-3 transition hover:text-[color:var(--text)]',
-                          isActive && 'text-[color:var(--brand)]',
+                          'rounded-full px-4 py-3 transition hover:text-[color:var(--brand)]',
+                          isActive ? 'text-[color:var(--brand)]' : 'text-[color:var(--text)]/78',
                         )
                       }
                       to={item.href}
@@ -105,10 +106,8 @@ export function SiteHeader() {
                 {siteConfig.contact.phone}
               </a>
               <Link className="npi-button npi-button-primary" to="/contact">
-                <span>Kontakt</span>
-                <span aria-hidden="true" className="npi-button__icon">
-                  ↗
-                </span>
+                <span>Contact</span>
+                <ButtonArrowIcon />
               </Link>
             </div>
 
@@ -152,7 +151,7 @@ export function SiteHeader() {
                       <NavLink
                         className={({ isActive }) =>
                           cn(
-                            'block rounded-2xl px-4 py-3 text-base font-medium text-[color:var(--text-muted)] transition hover:bg-[color:var(--surface-muted)] hover:text-[color:var(--text)]',
+                            'block rounded-2xl px-4 py-3 text-base font-medium text-[color:var(--text)] transition hover:bg-[color:var(--surface-muted)] hover:text-[color:var(--brand)]',
                             isActive && 'bg-[color:var(--surface-muted)] text-[color:var(--brand)]',
                           )
                         }
@@ -175,10 +174,8 @@ export function SiteHeader() {
                     onClick={() => setIsMobileNavOpen(false)}
                     to="/contact"
                   >
-                    <span>Kontakt</span>
-                    <span aria-hidden="true" className="npi-button__icon">
-                      ↗
-                    </span>
+                    <span>Contact</span>
+                    <ButtonArrowIcon />
                   </Link>
                 </div>
               </div>

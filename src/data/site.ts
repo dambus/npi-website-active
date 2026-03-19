@@ -1,6 +1,6 @@
 export const siteConfig = {
   companyName: 'NPI',
-  legalName: 'Neopetrol Inzenjering d.o.o. Beograd',
+  legalName: 'Neopetrol Inzenjering',
   tagline: 'Engineering, project development, and delivery support for industrial energy systems.',
   navigation: [
     { label: 'Home', href: '/' },
@@ -17,8 +17,9 @@ export const siteConfig = {
   ],
   contact: {
     email: 'office@npi.rs',
-    phone: '+381 11 400 8500',
-    address: 'Belgrade, Serbia',
+    phone: '+381 21 302 05 46',
+    address: 'Fruskogorska 1, Naucno Tehnoloski Park, sprat 5, 21000 Novi Sad, Serbia',
+    addressLines: ['Fruskogorska 1, Naucno Tehnoloski Park, sprat 5', '21000 Novi Sad, Serbia'],
   },
-  footerNote: 'Neopetrol Inzenjering d.o.o. Beograd. All rights reserved.',
+  footerNote: 'Neopetrol Inzenjering. All rights reserved.',
 }
