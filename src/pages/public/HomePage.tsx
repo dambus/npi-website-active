@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 
 import { Container } from '@/components/layout/Container'
 import { ButtonArrowIcon } from '@/components/ui/ButtonArrowIcon'
+import { siteConfig } from '@/data/site'
 import { getProjects } from '@/services/projects/getProjects'
 import type { Project } from '@/types/project'
 
@@ -19,9 +20,27 @@ const servicesFeatureImage = '/media/on site pictures/DSC_8729-Edit.jpg'
 const processSectionImage = '/media/on site pictures/DSC_8593-Edit.jpg'
 
 const introStats = [
-  { value: 20, suffix: '+', label: 'years in industrial project environments' },
-  { value: 4, suffix: '', label: 'core delivery groups across engineering support' },
-  { value: 3, suffix: '', label: 'selected references highlighted on the homepage' },
+  {
+    value: 20,
+    suffix: '+',
+    eyebrow: 'Experience',
+    emphasis: 'industrial project environments',
+    supporting: 'Years shaping technical support around delivery realities, coordination pressure, and execution discipline.',
+  },
+  {
+    value: 4,
+    suffix: '',
+    eyebrow: 'Structure',
+    emphasis: 'core delivery groups',
+    supporting: 'A compact service architecture that makes multidisciplinary capability easier to scan and understand.',
+  },
+  {
+    value: 3,
+    suffix: '',
+    eyebrow: 'Proof',
+    emphasis: 'selected homepage references',
+    supporting: 'Enough visible project evidence to build trust early, without overcrowding the first visit.',
+  },
 ]
 
 const introAudience = [
@@ -73,6 +92,11 @@ const performanceStats = [
 ]
 
 const partnerLogos = ['EPC Networks', 'Petrogrid', 'Energo Systems', 'ControlHub', 'Process Line', 'Infra East']
+const contactHighlights = [
+  { label: 'Email', value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
+  { label: 'Phone', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone.replace(/\s+/g, '')}` },
+]
+const contactSteps = ['Share the project context.', 'We align on scope and timing.', 'The conversation continues on the full contact page.']
 
 export function HomePage() {
   const [featuredProjects, setFeaturedProjects] = React.useState<Project[]>([])
@@ -217,18 +241,37 @@ export function HomePage() {
               </div>
               </div>
 
-              <div className="relative z-10 mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="relative z-10 mt-14 grid gap-4 sm:mt-16 sm:grid-cols-2 xl:grid-cols-3">
               {introStats.map((item) => (
-                <div key={item.label} className="rounded-[1rem] border border-white/70 bg-white/92 p-6 shadow-[0_18px_36px_rgba(11,20,20,0.08)]">
-                  <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--brand)]">Proof</p>
-                  <p className="mt-4 text-5xl font-semibold tracking-[-0.07em] text-[color:var(--text)]">
-                    {item.value}
-                    {item.suffix}
-                  </p>
-                  <p className="mt-3 text-base leading-6 text-[color:var(--text-muted)]">{item.label}</p>
-                </div>
+                <article
+                  key={item.emphasis}
+                  className="group rounded-[1.05rem] border border-white/75 bg-white/95 p-6 shadow-[0_18px_36px_rgba(11,20,20,0.08)] backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-[rgba(15,154,104,0.22)] hover:bg-white hover:shadow-[0_24px_46px_rgba(11,20,20,0.1)]"
+                >
+                  <div className="flex h-full gap-5">
+                    <div className="flex min-w-[5.25rem] flex-col justify-between border-r border-[rgba(15,154,104,0.14)] pr-5">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">
+                        {item.eyebrow}
+                      </p>
+                      <p className="mt-6 text-5xl font-semibold leading-none tracking-[-0.08em] text-[color:var(--text)] sm:text-6xl">
+                        {item.value}
+                        <span className="text-[color:var(--brand)]">{item.suffix}</span>
+                      </p>
+                    </div>
+
+                    <div className="flex flex-1 flex-col justify-between">
+                      <p className="text-[1.15rem] font-semibold leading-[1.08] tracking-[-0.05em] text-[color:var(--text)] sm:text-[1.35rem]">
+                        <span className="text-[color:var(--brand-strong)]">{item.emphasis}</span>
+                      </p>
+                      <p className="mt-4 text-sm leading-6 text-[color:var(--text-muted)] sm:text-[0.98rem] sm:leading-7">
+                        {item.supporting}
+                      </p>
+                    </div>
+                  </div>
+                </article>
               ))}
               </div>
+
+              <div className="h-4 sm:h-6" />
             </Container>
             </div>
         </div>
@@ -236,44 +279,49 @@ export function HomePage() {
 
       <section className="py-20 sm:py-24">
         <Container size="wide">
-          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr_0.95fr]">
-            <div className="rounded-[1.2rem] bg-[color:var(--brand-soft)] p-8 shadow-[var(--shadow-card)] lg:p-10">
-              <ServiceIconCard icon={TrophyIcon} title="Award-worthy discipline" />
-              <p className="mt-8 text-4xl font-semibold tracking-[-0.06em] text-[color:var(--text)]">
-                Solutions built for engineering-led business needs.
-              </p>
-              <p className="mt-5 text-base leading-7 text-[color:var(--text-muted)]">
-                Service groups stay concise, but each one maps to real technical support used in complex industrial
-                environments.
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="flex aspect-square flex-col rounded-[1.2rem] bg-[color:var(--brand-soft)] p-8 shadow-[var(--shadow-card)] lg:p-9">
+              <div>
+                <DocumentTextIcon className="h-14 w-14 stroke-[1.7] text-[color:var(--brand-strong)]" />
+                <p className="mt-8 max-w-[12ch] text-[clamp(1.95rem,2.6vw,2.7rem)] font-semibold leading-[1.02] tracking-[-0.06em] text-[color:var(--text)]">
+                  Solutions shaped for engineering-led needs.
+                </p>
+              </div>
+              <p className="mt-auto max-w-[24ch] pt-5 text-[0.98rem] leading-7 text-[color:var(--text-muted)]">
+                Concise categories still map to real technical support used in complex industrial environments.
               </p>
             </div>
 
-            <div className="flex flex-col justify-center px-1 lg:px-4">
-              <span className="section-label">Choose the best fit</span>
-              <h2 className="mt-7 max-w-xl text-[clamp(2.45rem,4vw,4rem)] font-semibold leading-[1.02] tracking-[-0.065em] text-[color:var(--text)]">
-                Service groups that explain capability quickly.
-              </h2>
-              <p className="mt-5 max-w-xl text-[1.02rem] leading-7 text-[color:var(--text-muted)] sm:text-lg sm:leading-8">
-                The homepage highlights selected engineering areas so visitors can identify relevance before diving into
-                deeper service detail.
-              </p>
-              <div className="mt-8">
-                <ActionLink to="/services" variant="primary">
-                  Learn More
-                </ActionLink>
+            <div className="flex aspect-square flex-col p-8 lg:p-9">
+              <div>
+                <span className="section-label">Choose the best fit</span>
+                <h2 className="mt-9 max-w-[11ch] text-[clamp(1.95rem,2.8vw,3.1rem)] font-semibold leading-[1.02] tracking-[-0.065em] text-[color:var(--text)]">
+                  Service groups that explain capability fast.
+                </h2>
+              </div>
+              <div className="mt-auto">
+                <p className="max-w-[24ch] text-base leading-7 text-[color:var(--text-muted)] sm:text-[1.02rem] sm:leading-8">
+                  Visitors can identify relevance early, then move into deeper service detail only when needed.
+                </p>
+                <div className="mt-8">
+                  <ActionLink to="/services" variant="primary">
+                    Learn More
+                  </ActionLink>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-[1.2rem] bg-white p-8 shadow-[var(--shadow-card)] lg:p-10">
-              <ServiceIconCard icon={IconUsersGroup} title="Expert team alignment" />
-              <p className="mt-7 text-base leading-7 text-[color:var(--text-muted)]">
-                Teams, partners, and decision-makers get a calm overview of what NPI supports and how technical
-                communication is structured across project interfaces.
+            <div className="flex aspect-square flex-col rounded-[1.2rem] bg-white p-8 shadow-[var(--shadow-card)] lg:p-9">
+              <div>
+                <IconUsersGroup className="h-14 w-14 stroke-[1.7] text-[color:var(--brand)]" />
+                <h3 className="mt-8 max-w-[12ch] text-[clamp(1.95rem,2.5vw,2.55rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-[color:var(--text)]">
+                  Expert team alignment
+                </h3>
+              </div>
+              <p className="mt-auto max-w-[24ch] pt-5 text-[1rem] leading-7 text-[color:var(--text-muted)]">
+                  Teams and decision-makers get a calm overview of support areas and project communication structure.
               </p>
             </div>
-          </div>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_1fr_0.95fr]">
             {services.slice(0, 2).map((service) => (
               <ServiceHoverCard
                 key={service.title}
@@ -283,10 +331,10 @@ export function HomePage() {
               />
             ))}
 
-            <div className="relative overflow-hidden rounded-[1.2rem] bg-[color:var(--surface-inverse)]">
+            <div className="relative aspect-square overflow-hidden rounded-[1.2rem] bg-[color:var(--surface-inverse)] shadow-[var(--shadow-card)]">
               <img
                 alt="NPI industrial plant infrastructure"
-                className="h-full min-h-[320px] w-full object-cover opacity-55"
+                className="h-full w-full object-cover opacity-55"
                 src={servicesFeatureImage}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(11,20,20,0.84)] via-transparent to-transparent" />
@@ -298,9 +346,6 @@ export function HomePage() {
                 <p className="mt-2 text-6xl font-semibold tracking-[-0.08em]">8.5x</p>
               </div>
             </div>
-          </div>
-
-          <div className="mt-8 grid gap-8 md:grid-cols-3">
             {services.slice(2).map((service) => (
               <ServiceHoverCard
                 key={service.title}
@@ -502,7 +547,7 @@ export function HomePage() {
         <div className="npi-shell">
           <div className="overflow-hidden rounded-[1.4rem] bg-[radial-gradient(circle_at_bottom_right,rgba(30,143,121,0.18),transparent_30%),linear-gradient(135deg,#0b1414_0%,#0d1d1f_65%,#123538_100%)] px-6 py-14 text-[color:var(--text-on-dark)] sm:px-10 lg:px-14 lg:py-16">
             <Container className="px-0" size="wide">
-              <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+              <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
               <div>
                 <span className="section-label section-label-dark">
                   Get in touch
@@ -514,20 +559,65 @@ export function HomePage() {
                   Use the contact route for direct project conversations, reference requests, or early-stage technical
                   inquiries.
                 </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <ActionLink to="/contact" variant="primary">
+                    Open Contact Page
+                  </ActionLink>
+                  <ActionLink to="/references" variant="secondary">
+                    Review References
+                  </ActionLink>
+                </div>
+                <p className="mt-5 max-w-xl text-sm leading-6 text-[color:var(--text-on-dark-muted)] sm:text-base sm:leading-7">
+                  This section stays intentionally lean on the homepage: just enough signal to prompt a conversation,
+                  while the full form experience lives on the dedicated contact route.
+                </p>
               </div>
 
-              <div className="rounded-[1.2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-md sm:p-8">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <ContactField label="Full name" />
-                  <ContactField label="Email address" />
-                  <ContactField label="Phone number" />
-                  <ContactField label="Service area" placeholder="Engineering support" />
+              <div className="grid gap-4">
+                <div className="rounded-[1.2rem] border border-white/10 bg-white/7 p-6 backdrop-blur-md sm:p-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-soft)]">
+                    Direct channels
+                  </p>
+                  <div className="mt-6 grid gap-4">
+                    {contactHighlights.map((item) => (
+                      <a
+                        key={item.label}
+                        className="group flex items-center justify-between gap-4 rounded-[1rem] border border-white/10 bg-white/8 px-5 py-4 transition duration-300 hover:border-white/20 hover:bg-white/12"
+                        href={item.href}
+                      >
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--text-on-dark-muted)]">
+                            {item.label}
+                          </p>
+                          <p className="mt-2 text-lg font-semibold tracking-[-0.03em] text-white">
+                            {item.value}
+                          </p>
+                        </div>
+                        <span className="text-sm font-medium text-[color:var(--brand-soft)] transition duration-300 group-hover:translate-x-1">
+                          Reach out
+                        </span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
-                <ContactField className="mt-4" label="Message" multiline placeholder="Briefly describe project context, scope, or timing." />
-                <div className="mt-6">
-                  <ActionLink to="/contact" variant="primary">
-                    Send Inquiry
-                  </ActionLink>
+
+                <div className="rounded-[1.2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-6 sm:p-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-soft)]">
+                    Next step
+                  </p>
+                  <ol className="mt-5 grid gap-3">
+                    {contactSteps.map((step, index) => (
+                      <li
+                        key={step}
+                        className="flex items-start gap-4 rounded-[0.95rem] border border-white/8 bg-black/10 px-4 py-4"
+                      >
+                        <span className="mt-0.5 inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-sm font-semibold text-white">
+                          {index + 1}
+                        </span>
+                        <p className="text-sm leading-6 text-[color:var(--text-on-dark-muted)] sm:text-base">{step}</p>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
               </div>
               </div>
@@ -556,48 +646,6 @@ function ActionLink({
   )
 }
 
-function ContactField({
-  className,
-  label,
-  multiline = false,
-  placeholder,
-}: {
-  className?: string
-  label: string
-  multiline?: boolean
-  placeholder?: string
-}) {
-  return (
-    <div className={className}>
-      <p className="mb-3 text-sm font-medium text-[color:var(--text-on-dark-muted)]">{label}</p>
-      {multiline ? (
-        <div className="min-h-[180px] rounded-[1rem] border border-white/10 bg-white/10 px-4 py-4 text-base text-white/75">
-          {placeholder}
-        </div>
-      ) : (
-        <div className="min-h-[56px] rounded-[1rem] border border-white/10 bg-white/10 px-4 py-4 text-base text-white/75">
-          {placeholder ?? ''}
-        </div>
-      )}
-    </div>
-  )
-}
-
-function ServiceIconCard({
-  icon: Icon,
-  title,
-}: {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  title: string
-}) {
-  return (
-    <div>
-      <Icon className="h-16 w-16 stroke-[1.7] text-[color:var(--brand)]" />
-      <h3 className="mt-8 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)]">{title}</h3>
-    </div>
-  )
-}
-
 function ServiceHoverCard({
   description,
   icon: Icon,
@@ -608,17 +656,17 @@ function ServiceHoverCard({
   title: string
 }) {
   return (
-    <article className="group relative overflow-hidden rounded-[0.95rem] border border-transparent bg-white p-8 shadow-[var(--shadow-card)] transition-[transform,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[color:var(--brand-strong)] hover:shadow-[0_22px_50px_rgba(15,154,104,0.18)]">
+    <article className="group relative flex aspect-square overflow-hidden rounded-[0.95rem] border border-transparent bg-white p-8 shadow-[var(--shadow-card)] transition-[transform,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-[color:var(--brand-strong)] hover:shadow-[0_22px_50px_rgba(15,154,104,0.18)]">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--brand)_0%,var(--brand-strong)_100%)] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.18),transparent_36%)] opacity-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" />
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-1 flex-col">
         <span className="inline-flex">
           <Icon className="npi-hover-bounce-icon h-14 w-14 text-[color:var(--brand)] transition duration-300 ease-out group-hover:text-white" />
         </span>
-        <h3 className="mt-10 text-2xl font-semibold tracking-[-0.05em] text-[color:var(--text)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
+        <h3 className="mt-8 max-w-[12ch] text-[1.75rem] font-semibold leading-[1.04] tracking-[-0.05em] text-[color:var(--text)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
           {title}
         </h3>
-        <p className="mt-4 text-base leading-7 text-[color:var(--text-muted)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
+        <p className="mt-auto pt-5 text-base leading-7 text-[color:var(--text-muted)] transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-white">
           {description}
         </p>
       </div>
