@@ -18,85 +18,106 @@ const heroLandingImage = '/media/hero-landing.jpg'
 const heroFrontImage = '/media/promo pictures/DSC_8772.jpg'
 const servicesFeatureImage = '/media/on site pictures/DSC_8729-Edit.jpg'
 const processSectionImage = '/media/on site pictures/DSC_8593-Edit.jpg'
+const companyFoundedYear = 2008
+const companyYearsInOperation = new Date().getFullYear() - companyFoundedYear
 
 const introStats = [
   {
+    value: companyYearsInOperation,
+    suffix: '',
+    eyebrow: 'Founded',
+    emphasis: 'Years in operation',
+    supporting: 'Founded in 2008, Neopetrol Inzenjering has steadily built its presence in industrial engineering and technical documentation.',
+  },
+  {
     value: 20,
     suffix: '+',
-    eyebrow: 'Experience',
-    emphasis: 'industrial project environments',
-    supporting: 'Years shaping technical support around delivery realities, coordination pressure, and execution discipline.',
+    eyebrow: 'Team',
+    emphasis: 'Engineers',
+    supporting: 'A multidisciplinary engineering team working across industrial and energy projects.',
   },
   {
-    value: 4,
-    suffix: '',
-    eyebrow: 'Structure',
-    emphasis: 'core delivery groups',
-    supporting: 'A compact service architecture that makes multidisciplinary capability easier to scan and understand.',
+    value: 150,
+    suffix: '+',
+    eyebrow: 'Portfolio',
+    emphasis: 'Completed projects',
+    supporting: 'Project experience developed through technical documentation, design, and project support.',
   },
   {
-    value: 3,
+    value: 30,
+    suffix: '+',
+    eyebrow: 'Network',
+    emphasis: 'Clients and partners',
+    supporting: 'Experience with investors, EPC contractors, public institutions, and engineering partners.',
+  },
+  {
+    value: 5,
     suffix: '',
-    eyebrow: 'Proof',
-    emphasis: 'selected homepage references',
-    supporting: 'Enough visible project evidence to build trust early, without overcrowding the first visit.',
+    eyebrow: 'Coverage',
+    emphasis: 'Engineering disciplines',
+    supporting: 'Process, mechanical, electrical, instrumentation and control, and civil engineering.',
   },
 ]
 
 const introAudience = [
-  'Project owners and investors',
-  'EPC and delivery partners',
-  'Industrial decision-makers',
+  'National energy companies',
+  'Government institutions',
+  'International engineering firms',
 ]
 
 const services = [
   {
-    title: 'Process and Mechanical Systems',
-    description: 'Support for plant, utility, and process-oriented scopes that require disciplined technical coordination.',
+    title: 'Conceptual Design and Feasibility Studies',
+    description: 'Early-phase engineering support used to define technical direction, scope, and project feasibility.',
     icon: TrophyIcon,
   },
   {
-    title: 'Electrical Engineering',
-    description: 'Technical input for power, distribution, and integration tasks within broader project packages.',
+    title: 'Front End Engineering Design',
+    description: 'FEED packages prepared to support planning, coordination, and investment-stage decision making.',
     icon: BoltIcon,
   },
   {
-    title: 'Instrumentation and Control',
-    description: 'Structured support for control logic, field instrumentation, and project communication between disciplines.',
+    title: 'Basic and Detailed Design',
+    description: 'Technical documentation developed from design intent through construction-ready project documentation.',
     icon: CpuChipIcon,
   },
   {
-    title: 'Telecom, Fire and Gas',
-    description: 'Coordination for systems that depend on reliability, safety alignment, and documentation clarity.',
+    title: 'Technical Documentation and Studies',
+    description: 'Engineering studies and documentation prepared to meet industrial, regulatory, and project requirements.',
     icon: IconBroadcast,
   },
   {
-    title: 'Technical Documentation',
-    description: 'Execution-ready documentation that helps teams move from concept definition to delivery preparation.',
+    title: 'Construction Support',
+    description: 'Engineering participation continues during construction when coordination and technical clarification are needed.',
     icon: DocumentTextIcon,
   },
 ]
 
 const processPoints = [
-  'Define the project scope and technical priorities early.',
-  'Coordinate multidisciplinary inputs into a clear delivery path.',
-  'Prepare documentation and interfaces for execution readiness.',
-  'Support communication through the practical realities of delivery.',
+  'Process engineering',
+  'Mechanical engineering',
+  'Electrical engineering',
+  'Instrumentation and control (I&C)',
+  'Civil engineering',
 ]
 
 const performanceStats = [
-  { value: 8.5, suffix: 'x', label: 'project scale multiplier reflected through structured delivery support' },
-  { value: 20, suffix: '+', label: 'industrial and energy-focused environments informing the presentation' },
-  { value: 93, suffix: '%', label: 'of the interface optimized for readability, hierarchy, and fast scanning' },
-  { value: 4, suffix: '', label: 'service groups visible before the visitor needs deeper project detail' },
+  { value: 1, suffix: '', label: 'Gas pipelines and gas infrastructure' },
+  { value: 2, suffix: '', label: 'Compressor stations and processing facilities' },
+  { value: 3, suffix: '', label: 'Measurement and metering stations' },
+  { value: 4, suffix: '', label: 'Storage and distribution systems' },
+  { value: 5, suffix: '', label: 'Instrumentation and control systems' },
 ]
 
-const partnerLogos = ['EPC Networks', 'Petrogrid', 'Energo Systems', 'ControlHub', 'Process Line', 'Infra East']
 const contactHighlights = [
   { label: 'Email', value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` },
   { label: 'Phone', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone.replace(/\s+/g, '')}` },
 ]
-const contactSteps = ['Share the project context.', 'We align on scope and timing.', 'The conversation continues on the full contact page.']
+const contactSteps = [
+  'Share your project scope or engineering requirement.',
+  'We review the request and align on the next technical step.',
+  'The conversation continues through the full contact page or direct channels.',
+]
 
 export function HomePage() {
   const [featuredProjects, setFeaturedProjects] = React.useState<Project[]>([])
@@ -146,24 +167,28 @@ export function HomePage() {
               <div className="grid gap-12 lg:min-h-[640px] lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
               <div>
                 <span className="section-label section-label-dark">
-                  Engineering support that stays clear under complexity
+                  Neopetrol Inzenjering
                 </span>
                 <h1 className="mt-8 max-w-5xl text-[clamp(3.2rem,6.2vw,6.1rem)] font-normal leading-[0.95] tracking-[-0.055em] text-white">
-                  Engineering clarity for demanding industrial projects.
+                  Engineering and design for oil, gas and process industry
                 </h1>
                 <p className="mt-7 max-w-2xl text-[1.02rem] leading-7 text-[color:var(--text-on-dark-muted)] sm:text-lg sm:leading-8">
-                  NPI supports project owners, partners, and delivery teams with multidisciplinary engineering,
-                  technical documentation, and execution-focused coordination.
+                  Neopetrol Inzenjering is a Serbian engineering company specialized in the design and development of
+                  industrial facilities in the oil, gas and process industries.
+                </p>
+                <p className="mt-5 max-w-2xl text-[1.02rem] leading-7 text-[color:var(--text-on-dark-muted)] sm:text-lg sm:leading-8">
+                  Founded in 2008 in Novi Sad, the company provides engineering, consulting and technical
+                  documentation services across all phases of project development, from conceptual studies to detailed
+                  design and construction support.
                 </p>
 
                 <div className="mt-10 flex flex-wrap items-center gap-4">
                   <ActionLink to="/references" variant="primary">
                     View References
                   </ActionLink>
-                  <p className="max-w-sm text-sm leading-6 text-[color:var(--text-on-dark-muted)] sm:text-base sm:leading-7">
-                    Built to help investors, clients, and partners understand capability fast and move directly into
-                    contact or references.
-                  </p>
+                  <ActionLink to="/contact" variant="secondary">
+                    Contact Us
+                  </ActionLink>
                 </div>
               </div>
 
@@ -178,10 +203,11 @@ export function HomePage() {
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
                     <div className="max-w-sm rounded-[1rem] border border-white/12 bg-[rgba(8,14,15,0.56)] p-5 backdrop-blur-md">
                       <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--brand-soft)]">
-                        Project delivery focus
+                        Engineering profile
                       </p>
                       <p className="mt-3 text-[1.35rem] font-medium leading-[1.12] tracking-[-0.035em] text-white">
-                        Technical support shaped for scope definition, coordination, and execution readiness.
+                        Our partners include national energy companies, government institutions and international
+                        engineering firms.
                       </p>
                     </div>
                   </div>
@@ -202,7 +228,7 @@ export function HomePage() {
                 <span className="section-label">Get to know NPI</span>
                 <div className="mt-10 rounded-[0.95rem] border border-white/65 bg-white/78 p-5 shadow-[0_16px_28px_rgba(11,20,20,0.08)] backdrop-blur-sm">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand-strong)]">
-                    Who We Support
+                    Partners
                   </p>
                   <div className="mt-4 grid gap-3">
                     {introAudience.map((item) => (
@@ -217,52 +243,50 @@ export function HomePage() {
                   </div>
                 </div>
                 <p className="mt-5 max-w-xs text-lg leading-7 text-[color:var(--text-muted)]">
-                  Built for stakeholders who need a serious technical partner, not marketing noise.
+                  Neopetrol Inzenjering builds long-term partnerships with investors, EPC companies and technical
+                  teams looking for a reliable engineering partner for complex industrial projects.
                 </p>
               </div>
 
               <div>
                 <h2 className="max-w-5xl text-[clamp(2.55rem,4.6vw,4.8rem)] font-semibold leading-[1] tracking-[-0.065em] text-[color:var(--text)]">
-                  Coordinated engineering support, measurable project discipline, and communication shaped for
-                  industrial decision-makers.
+                  Engineering capacity shaped by experience, coordination and industrial project responsibility.
                 </h2>
                 <p className="mt-6 max-w-3xl text-[1.02rem] leading-7 text-[color:var(--text-muted)] sm:text-lg sm:leading-8">
-                  NPI presents its capabilities through clear service groups, selected references, and a practical
-                  description of how technical work moves from definition to execution-ready coordination.
+                  Founded in Novi Sad in 2008, Neopetrol Inzenjering brings together multidisciplinary engineering
+                  knowledge, practical project coordination and years of work on oil, gas and process facilities
+                  across the region.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <ActionLink to="/about" variant="primary">
                     Learn More
                   </ActionLink>
-                  <ActionLink to="/services" variant="secondary">
-                    Explore Services
-                  </ActionLink>
                 </div>
               </div>
               </div>
 
-              <div className="relative z-10 mt-14 grid gap-4 sm:mt-16 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="relative z-10 mt-14 grid gap-4 sm:mt-16 sm:auto-rows-fr sm:grid-cols-2 xl:grid-cols-3">
               {introStats.map((item) => (
                 <article
                   key={item.emphasis}
-                  className="group rounded-[1.05rem] border border-white/75 bg-white/95 p-6 shadow-[0_18px_36px_rgba(11,20,20,0.08)] backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-[rgba(15,154,104,0.22)] hover:bg-white hover:shadow-[0_24px_46px_rgba(11,20,20,0.1)]"
+                  className="group h-full rounded-[1.05rem] border border-white/75 bg-white/95 p-6 shadow-[0_18px_36px_rgba(11,20,20,0.08)] backdrop-blur-md transition-[transform,box-shadow,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-[rgba(15,154,104,0.22)] hover:bg-white hover:shadow-[0_24px_46px_rgba(11,20,20,0.1)]"
                 >
                   <div className="flex h-full gap-5">
-                    <div className="flex min-w-[5.25rem] flex-col justify-between border-r border-[rgba(15,154,104,0.14)] pr-5">
-                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">
+                    <div className="flex min-w-[6.75rem] flex-col items-start justify-between border-r border-[rgba(15,154,104,0.14)] pr-5">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-strong)]">
                         {item.eyebrow}
                       </p>
-                      <p className="mt-6 text-5xl font-semibold leading-none tracking-[-0.08em] text-[color:var(--text)] sm:text-6xl">
+                      <p className="[writing-mode:vertical-rl] rotate-180 text-5xl font-semibold leading-[0.9] tracking-[-0.08em] text-[color:var(--text)] sm:text-6xl">
                         {item.value}
                         <span className="text-[color:var(--brand)]">{item.suffix}</span>
                       </p>
                     </div>
 
                     <div className="flex flex-1 flex-col justify-between">
-                      <p className="text-[1.15rem] font-semibold leading-[1.08] tracking-[-0.05em] text-[color:var(--text)] sm:text-[1.35rem]">
+                      <p className="text-[1.15rem] font-semibold leading-[1.02] tracking-[-0.05em] text-[color:var(--text)] sm:text-[1.35rem]">
                         <span className="text-[color:var(--brand-strong)]">{item.emphasis}</span>
                       </p>
-                      <p className="mt-4 text-sm leading-6 text-[color:var(--text-muted)] sm:text-[0.98rem] sm:leading-7">
+                      <p className="mt-4 text-sm leading-[1.55] text-[color:var(--text-muted)] sm:text-[0.98rem] sm:leading-[1.6]">
                         {item.supporting}
                       </p>
                     </div>
@@ -281,14 +305,14 @@ export function HomePage() {
         <Container size="wide">
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             <div className="flex aspect-square flex-col rounded-[1.2rem] bg-[color:var(--brand-soft)] p-8 shadow-[var(--shadow-card)] lg:p-9">
-              <div>
+                <div>
                 <DocumentTextIcon className="h-14 w-14 stroke-[1.7] text-[color:var(--brand-strong)]" />
                 <p className="mt-8 max-w-[12ch] text-[clamp(1.95rem,2.6vw,2.7rem)] font-semibold leading-[1.02] tracking-[-0.06em] text-[color:var(--text)]">
-                  Solutions shaped for engineering-led needs.
+                  Engineering services
                 </p>
               </div>
               <p className="mt-auto max-w-[24ch] pt-5 text-[0.98rem] leading-7 text-[color:var(--text-muted)]">
-                Concise categories still map to real technical support used in complex industrial environments.
+                Neopetrol Inzenjering provides engineering and design services for industrial facilities and energy infrastructure.
               </p>
             </div>
 
@@ -296,16 +320,17 @@ export function HomePage() {
               <div>
                 <span className="section-label">Choose the best fit</span>
                 <h2 className="mt-9 max-w-[11ch] text-[clamp(1.95rem,2.8vw,3.1rem)] font-semibold leading-[1.02] tracking-[-0.065em] text-[color:var(--text)]">
-                  Service groups that explain capability fast.
+                  Work scopes matched to the project phase.
                 </h2>
               </div>
               <div className="mt-auto">
                 <p className="max-w-[24ch] text-base leading-7 text-[color:var(--text-muted)] sm:text-[1.02rem] sm:leading-8">
-                  Visitors can identify relevance early, then move into deeper service detail only when needed.
+                  Depending on the project phase, our work includes concept studies, FEED, detailed design,
+                  documentation, and construction support.
                 </p>
                 <div className="mt-8">
                   <ActionLink to="/services" variant="primary">
-                    Learn More
+                    View Services
                   </ActionLink>
                 </div>
               </div>
@@ -315,11 +340,11 @@ export function HomePage() {
               <div>
                 <IconUsersGroup className="h-14 w-14 stroke-[1.7] text-[color:var(--brand)]" />
                 <h3 className="mt-8 max-w-[12ch] text-[clamp(1.95rem,2.5vw,2.55rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-[color:var(--text)]">
-                  Expert team alignment
+                  Engineering cooperation
                 </h3>
               </div>
               <p className="mt-auto max-w-[24ch] pt-5 text-[1rem] leading-7 text-[color:var(--text-muted)]">
-                  Teams and decision-makers get a calm overview of support areas and project communication structure.
+                  Our engineers regularly cooperate with investors, EPC contractors and international engineering companies.
               </p>
             </div>
             {services.slice(0, 2).map((service) => (
@@ -342,8 +367,8 @@ export function HomePage() {
                 <IconTrendingUp className="h-10 w-10 stroke-[1.8]" />
               </div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <p className="text-lg text-[color:var(--text-on-dark-muted)]">Faster alignment</p>
-                <p className="mt-2 text-6xl font-semibold tracking-[-0.08em]">8.5x</p>
+                <p className="text-lg text-[color:var(--text-on-dark-muted)]">Core disciplines</p>
+                <p className="mt-2 text-6xl font-semibold tracking-[-0.08em]">5</p>
               </div>
             </div>
             {services.slice(2).map((service) => (
@@ -364,17 +389,17 @@ export function HomePage() {
             <Container className="contents" size="wide">
             <div className="px-8 py-14 text-[color:var(--text-on-dark)] sm:px-10 lg:px-14 lg:py-16">
               <span className="section-label section-label-dark">
-                Our process
+                Engineering disciplines
               </span>
               <p className="mt-10 text-sm font-semibold uppercase tracking-[0.12em] text-[color:var(--text-on-dark-muted)]">
                 01.
               </p>
               <h2 className="mt-5 max-w-lg text-[clamp(2.45rem,4vw,3.9rem)] font-semibold leading-[1] tracking-[-0.065em] text-white">
-                From scope definition to execution-ready coordination.
+                Engineering disciplines
               </h2>
               <p className="mt-5 max-w-xl text-[1.02rem] leading-7 text-[color:var(--text-on-dark-muted)] sm:text-lg sm:leading-8">
-                The homepage explains how NPI works without turning the page into a brochure. Clear stages reduce
-                ambiguity and make technical capability easier to trust.
+                Projects are developed through coordinated work of multiple engineering disciplines. The
+                multidisciplinary approach ensures technical consistency and full coordination of project documentation.
               </p>
               <ul className="mt-8 grid gap-4">
                 {processPoints.map((point) => (
@@ -385,8 +410,8 @@ export function HomePage() {
                 ))}
               </ul>
               <div className="mt-10">
-                <ActionLink to="/contact" variant="primary">
-                  Discuss a Project
+                <ActionLink to="/services" variant="primary">
+                  Explore Services
                 </ActionLink>
               </div>
             </div>
@@ -411,17 +436,15 @@ export function HomePage() {
             <Container className="relative z-10 px-0" size="wide">
               <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
               <div className="max-w-3xl">
-                <span className="section-label">Performance facts</span>
+                <span className="section-label">Industry experience</span>
                 <h2 className="mt-7 text-[clamp(2.45rem,4vw,4rem)] font-semibold leading-[1.02] tracking-[-0.065em] text-[color:var(--text)]">
-                  Numbers that strengthen a calm, credible engineering narrative.
+                  Industry experience
                 </h2>
               </div>
               <div className="flex items-center gap-4 self-start rounded-full bg-white/90 px-5 py-4 shadow-[var(--shadow-card)]">
-                <div className="min-w-[5.5rem] text-[3rem] font-semibold leading-none tracking-[-0.08em] text-[color:var(--brand-strong)]">
-                  92%
-                </div>
+                <div className="min-w-[5.5rem] text-[3rem] font-semibold leading-none tracking-[-0.08em] text-[color:var(--brand-strong)]">17+</div>
                 <p className="max-w-xs text-base leading-6 text-[color:var(--text-muted)]">
-                  Increased clarity in how the company presents capability, services, and references.
+                  Years of project participation across oil, gas, and industrial infrastructure work.
                 </p>
               </div>
               </div>
@@ -442,11 +465,14 @@ export function HomePage() {
             <div className="max-w-3xl">
               <span className="section-label">Featured references</span>
               <h2 className="mt-8 text-[clamp(2.6rem,4.2vw,4.3rem)] font-semibold leading-[1.02] tracking-[-0.07em] text-[color:var(--text)]">
-                Selected project references that reinforce technical credibility.
+                Selected project references
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[color:var(--text-muted)]">
-                The homepage keeps references visible and easy to scan, with concise metadata instead of overloaded
-                card content.
+                Neopetrol Inzenjering engineers have participated in projects for national energy companies,
+                international contractors and industrial investors in the oil and gas sector.
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[color:var(--text-muted)]">
+                A selection of recent projects can be found in the References section.
               </p>
             </div>
             <ActionLink to="/references" variant="secondary">
@@ -511,38 +537,6 @@ export function HomePage() {
         </Container>
       </section>
 
-      <section className="pb-20 sm:pb-24">
-        <div className="npi-shell">
-          <div className="npi-soft-lines overflow-hidden rounded-[1.4rem] bg-[color:var(--surface-alt)] px-6 py-14 sm:px-10 lg:px-14">
-            <Container className="relative z-10 px-0" size="wide">
-              <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-3xl">
-                <span className="section-label">Clients and partners</span>
-                <h2 className="mt-7 text-[clamp(2.35rem,3.8vw,3.7rem)] font-semibold leading-[1.03] tracking-[-0.065em] text-[color:var(--text)]">
-                  A restrained logo strip keeps partnerships visible without stealing attention from projects.
-                </h2>
-              </div>
-              <p className="max-w-md text-base leading-7 text-[color:var(--text-muted)]">
-                This section is intentionally quiet: it supports trust, but does not compete with references or primary
-                calls to action.
-              </p>
-              </div>
-
-              <div className="relative z-10 mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
-              {partnerLogos.map((partner) => (
-                <div
-                  key={partner}
-                  className="grid min-h-[110px] place-items-center rounded-[1rem] bg-white px-6 text-center text-xl font-semibold tracking-[-0.04em] text-[color:var(--text-muted)] grayscale transition duration-200 hover:-translate-y-1 hover:text-[color:var(--text)] hover:grayscale-0"
-                >
-                  {partner}
-                </div>
-              ))}
-              </div>
-            </Container>
-            </div>
-        </div>
-      </section>
-
       <section className="pb-10 sm:pb-14">
         <div className="npi-shell">
           <div className="overflow-hidden rounded-[1.4rem] bg-[radial-gradient(circle_at_bottom_right,rgba(30,143,121,0.18),transparent_30%),linear-gradient(135deg,#0b1414_0%,#0d1d1f_65%,#123538_100%)] px-6 py-14 text-[color:var(--text-on-dark)] sm:px-10 lg:px-14 lg:py-16">
@@ -550,26 +544,21 @@ export function HomePage() {
               <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
               <div>
                 <span className="section-label section-label-dark">
-                  Get in touch
+                  Engineering partnership
                 </span>
                 <h2 className="mt-7 text-[clamp(2.45rem,4vw,4.1rem)] font-semibold leading-[1] tracking-[-0.065em] text-white">
-                  Ready to discuss a project scope or technical requirement?
+                  Engineering partnership
                 </h2>
                 <p className="mt-5 max-w-2xl text-[1.02rem] leading-7 text-[color:var(--text-on-dark-muted)] sm:text-lg sm:leading-8">
-                  Use the contact route for direct project conversations, reference requests, or early-stage technical
-                  inquiries.
+                  For cooperation inquiries, project participation or engineering support, please contact our team.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <ActionLink to="/contact" variant="primary">
-                    Open Contact Page
-                  </ActionLink>
-                  <ActionLink to="/references" variant="secondary">
-                    Review References
+                    Contact us
                   </ActionLink>
                 </div>
                 <p className="mt-5 max-w-xl text-sm leading-6 text-[color:var(--text-on-dark-muted)] sm:text-base sm:leading-7">
-                  This section stays intentionally lean on the homepage: just enough signal to prompt a conversation,
-                  while the full form experience lives on the dedicated contact route.
+                  Contact details remain direct and practical so project conversations can start without delay.
                 </p>
               </div>
 
